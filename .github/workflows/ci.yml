@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}-net8.0
+  IMAGE_NAME: ${{ github.repository }}-net9.0
 
 jobs:
   build:
