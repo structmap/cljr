@@ -6,11 +6,18 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}-net9.0
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        dotnet:
+          - version: "8.0"
+            suffix: "net8.0"
+          - version: "9.0"
+            suffix: "net9.0"
 
     steps:
       - name: Log into registry ${{ env.REGISTRY }}
@@ -31,4 +38,6 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.REGISTRY }}/${{ github.repository }}-${{ matrix.dotnet.suffix }}:latest
+          build-args:
+            - "DOTNET_VERSION=${{ matrix.dotnet.version }}"
