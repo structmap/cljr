@@ -1,0 +1,14 @@
+ARG DOTNET_VERSION=8.0-nanoserver-ltsc2022
+
+FROM mcr.microsoft.com/dotnet/sdk:${DOTNET_VERSION}
+
+ARG CLOJURE_MAIN_VERSION=1.12.1-alpha1
+ARG CLOJURE_CLJR_VERSION=0.1.0-alpha6
+
+RUN dotnet tool install --global Clojure.Main --version $env:CLOJURE_MAIN_VERSION
+RUN dotnet tool install --global Clojure.Cljr --version $env:CLOJURE_CLJR_VERSION
+
+WORKDIR C:\\opt\\cljr
+
+ENTRYPOINT ["C:\\Users\\ContainerUser\\.dotnet\\tools\\cljr.exe"]
+
