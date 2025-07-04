@@ -39,5 +39,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ env.REGISTRY }}/${{ github.repository }}-${{ matrix.dotnet.suffix }}:latest
-          build-args:
-            - "DOTNET_VERSION=${{ matrix.dotnet.version }}"
+          build-args: "DOTNET_VERSION=${{ matrix.dotnet.version }}"
