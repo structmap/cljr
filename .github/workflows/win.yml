@@ -25,5 +25,5 @@ jobs:
       - name: Build and push
         shell: powershell
         run: |
-          docker build . -f Dockerfile.windows -t ${{ env.REGISTRY }}/${{ github.repository }}-windows:latest
+          docker build -q -f Dockerfile.windows -t ${{ env.REGISTRY }}/${{ github.repository }}-windows:latest .
           docker push ${{ env.REGISTRY }}/${{ github.repository }}-windows:latest
