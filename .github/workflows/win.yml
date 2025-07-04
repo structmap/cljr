@@ -29,6 +29,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           platforms: windows/amd64
+          file: Dockerfile.windows
           push: true
           tags: ${{ env.REGISTRY }}/${{ github.repository }}-windows:latest
-
