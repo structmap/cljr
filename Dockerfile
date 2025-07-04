@@ -1,4 +1,5 @@
-FROM mcr.microsoft.com/dotnet/sdk:9.0
+ARG DOTNET_VERSION=9.0
+FROM mcr.microsoft.com/dotnet/sdk:${DOTNET_VERSION}
 USER root
 RUN apt update -y
 RUN apt install -y ca-certificates
