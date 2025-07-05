@@ -10,5 +10,4 @@ RUN dotnet tool install --global Clojure.Cljr --version %CLOJURE_CLJR_VERSION%
 
 WORKDIR C:\\opt\\cljr
 
-ENTRYPOINT ["C:\\Users\\ContainerUser\\.dotnet\\tools\\cljr.exe"]
-
+ENTRYPOINT ["cljr.exe"]
