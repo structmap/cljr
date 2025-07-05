@@ -26,4 +26,4 @@ jobs:
         shell: powershell
         run: |
           docker build -q -f Dockerfile.windows -t ${{ env.REGISTRY }}/${{ github.repository }}-windows:latest .
-          docker push ${{ env.REGISTRY }}/${{ github.repository }}-windows:latest
+          docker push -q ${{ env.REGISTRY }}/${{ github.repository }}-windows:latest
