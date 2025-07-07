@@ -1,5 +1,5 @@
 #!/bin/bash -e
-export PATH=$PATH:~/.dotnet/tools
+
 #dotnet restore
 #cljr -P
 
