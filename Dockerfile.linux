@@ -9,6 +9,11 @@ USER root
 RUN apt update -y
 RUN apt install -y ca-certificates
 
+# add a non-root user to the image if it is lacking (just .net6)
+ARG USER_UID=1654
+ARG USER_GID=$USER_UID
+RUN groupadd --force --gid $USER_GID app && useradd --uid $USER_UID --gid $USER_GID -m app || id -u app
+
 USER app
 RUN dotnet tool install --global Clojure.Main --version "${CLOJURE_MAIN_VERSION}"
 RUN dotnet tool install --global Clojure.Cljr --version "${CLOJURE_CLJR_VERSION}"
