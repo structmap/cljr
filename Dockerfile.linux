@@ -12,6 +12,6 @@ RUN apt install -y ca-certificates
 USER app
 RUN dotnet tool install --global Clojure.Main --version "${CLOJURE_MAIN_VERSION}"
 RUN dotnet tool install --global Clojure.Cljr --version "${CLOJURE_CLJR_VERSION}"
-ENV PATH="$PATH:/home/$USER/.dotnet/tools"
+ENV PATH="$PATH:/home/app/.dotnet/tools"
 WORKDIR /opt/cljr
-ENTRYPOINT ["/home/$USER/.dotnet/tools/cljr"]
+ENTRYPOINT ["/home/app/.dotnet/tools/cljr"]
