@@ -1,0 +1,17 @@
+ARG DOTNET_VERSION=9.0
+
+FROM mcr.microsoft.com/dotnet/sdk:${DOTNET_VERSION}
+
+ARG CLOJURE_MAIN_VERSION=1.12.1-alpha1
+ARG CLOJURE_CLJR_VERSION=0.1.0-alpha6
+
+USER root
+RUN apt update -y
+RUN apt install -y ca-certificates
+
+USER app
+RUN dotnet tool install --global Clojure.Main --version "${CLOJURE_MAIN_VERSION}"
+RUN dotnet tool install --global Clojure.Cljr --version "${CLOJURE_CLJR_VERSION}"
+ENV PATH="$PATH:/home/app/.dotnet/tools"
+WORKDIR /opt/cljr
+ENTRYPOINT ["cljr"]
